@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignInAdmin {
-    @Pattern(regexp = "^.+@admin\\.com$")
+    @Pattern(regexp = "^.+@instaAdmin\\.com$")
     private String email;
     private String password;
 }
