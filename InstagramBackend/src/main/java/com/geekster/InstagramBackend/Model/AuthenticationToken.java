@@ -1,0 +1,51 @@
+package com.geekster.InstagramBackend.Model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class AuthenticationToken {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long tokenId;
+    private String tokenValue;
+    private LocalDateTime tokenCreationDateTime;
+
+    private String signedInEmail;
+
+    @OneToOne
+    @JoinColumn(name = "fk_user_Id")
+    User user;
+
+    @OneToOne
+    @JoinColumn(name = "fk_admin_Id")
+    Admin admin;
+
+
+
+    //create a parameterized constructor which takes user as an argument
+    public AuthenticationToken(User existingUser) {
+        this.user = existingUser;
+        this.signedInEmail = existingUser.getUserEmail();
+        this.admin = null;
+        this.tokenValue = UUID.randomUUID().toString();
+        this.tokenCreationDateTime = LocalDateTime.now();
+    }
+
+    public AuthenticationToken(Admin existingAdmin){
+        this.user = null;
+        this.signedInEmail = existingAdmin.getAdminEmail();
+        this.admin = existingAdmin;
+        this.tokenValue = UUID.randomUUID().toString();
+        this.tokenCreationDateTime = LocalDateTime.now();
+    }
+}
