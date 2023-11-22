@@ -33,6 +33,18 @@ public class AuthenticationService {
         return true;
     }
 
+    public boolean authenticateAdmin(String email, String token) {
+        AuthenticationToken authToken = iAuthenticationRepo.findFirstByTokenValue(token);
+        if(authToken == null) {
+            return false;
+        }
+        String tokenConnectedEmail = authToken.getAdmin().getAdminEmail();
+        if(!tokenConnectedEmail.equals(email)){
+            return false;
+        }
+        return true;
+    }
+
 
     public AuthenticationToken findFirstByUser(User user) {
         return iAuthenticationRepo.findFirstByUser(user);
