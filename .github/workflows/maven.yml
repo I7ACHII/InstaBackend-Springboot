@@ -28,5 +28,6 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file ./InstagramBackend/pom.xml
-
+    - name: Execute Jar file
+      run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/InstaBackend-Springboot/InstaBackend-Springboot/InstagramBackend/target/InstagramBackend-0.0.1-SNAPSHOT.jar &   
 
