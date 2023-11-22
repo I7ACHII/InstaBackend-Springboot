@@ -47,6 +47,7 @@ public class AdminController {
 
     }
 
+    // API to get all users
     @GetMapping("Users")
     public List<User> getAllUsers(){
         return adminService.getAllUsers();
