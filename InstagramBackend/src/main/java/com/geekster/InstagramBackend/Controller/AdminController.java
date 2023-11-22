@@ -38,7 +38,7 @@ public class AdminController {
 
     @DeleteMapping("admin/signOut")
     public String sigOutInstaAdmin(String email, String token) {
-        if(authenticationService.authenticate(email,token)) {
+        if(authenticationService.authenticateAdmin(email,token)) {
             return adminService.sigOutInstaAdmin(email);
         }
         else {
