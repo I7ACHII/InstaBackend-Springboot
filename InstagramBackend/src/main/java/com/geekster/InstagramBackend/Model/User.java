@@ -24,7 +24,7 @@ public class User {
     private String userHandle;
     private String userBio;
 
-    @Pattern(regexp = "^.+@(?![Ii][Nn][Ss][Tt][Aa][Aa][Dd][Mm][Ii][Nn]\\.[Cc][Oo][Mm]$).+$")
+    @Pattern(regexp = "^.+@admin\\.com$")
     @Column(unique = true)
     private String userEmail;
     @NotBlank

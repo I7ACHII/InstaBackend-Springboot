@@ -19,7 +19,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adminId;
     private String adminName;
-    @Pattern(regexp = "^.+@instaAdmin\\.com$")
+    @Pattern(regexp = "^.+@admin\\.com$")
     private String adminEmail;
     private String adminPassword;
 }
